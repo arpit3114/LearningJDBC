@@ -1,0 +1,36 @@
+firstly add the 'connector ' file from the top left corner(four lines).
+four lines ---> libraries ---> add(+) -----> add connector file ----> apply -> DONE
+
+String url = "jdbc:mysql://localhost:3306/company";
+       String username = "root";
+       String password = "Admin@2004";
+
+       try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("-----------------------driver loaded Successfully ------------------------");
+       }catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+       }
+    above code is the basic code for drive load
+
+     try{
+         Connection con = DriverManager.getConnection(url,username,password);   ---> it establishes the connection
+             System.out.println("-----------connected Successfully---------------");
+             Statement stmt = con.createStatement();   ---> it creates the statement to run the query
+             ResultSet rs = stmt.executeQuery(query);   ---> 'rs' stores/hold the retrived data
+                  while(rs.next()){
+                // ---- TO PRINT THE CODE //
+                }
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        * above code for Connection
+
+rs.close();
+stmt.close();
+con.close();
+System.out.println("-------------connection closed-----------");
+         * above code for closing the connection
+
+executeQuery -> it is used to retrieve the data
+executeUpdate -> it is used to insert the data
